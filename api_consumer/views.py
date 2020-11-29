@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+
 from .consumerAPI import datareceived1, datareceived2
-from .models import theModel
+from .consumerAPI import SpaceXLaunchesPast
+
+from .models import theModel, LaunchesSpaceX
 
 def saving(req):
 	data1 = datareceived1
@@ -14,4 +17,14 @@ def saving(req):
 	# and thus i can fill the fields 
 
 	return HttpResponseRedirect('/input_data/')
+
+def SpaceSaver():
+
+	LaunchesSpacex(yt_video_link=)
+	LaunchesSpacex(year_launch=)
+	LaunchesSpacex(launch_success=)
+	LaunchesSpacex(launch_site=)
+	LaunchesSpacex(upcoming=)
+	LaunchesSpacex(rocket_name=)
+	LaunchesSpacex(yt_video_link=)
 
