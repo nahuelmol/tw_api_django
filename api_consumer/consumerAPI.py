@@ -22,11 +22,31 @@ def SpaceXLaunchesPast():
 
 	return result
 
-
 AllDataLaunches = SpaceXLaunchesPast()
 
-for i in AllDataLaunches:
-	print(i['mission_name'])
-	print(', ')
-	print(i['launch_year'])
+def SettingDateLaunches(AllDataLaunches):
+	val = 'hola'
+	myDict = {}
+	mylist = [50]
+
+	j = 0
+
+	for i in AllDataLaunches:
+
+
+		myDict['mission_name'] = i['mission_name']
+		myDict['launch_year' ] = i['launch_year']
+		myDict['launch_success'] = i['launch_success']
+		myDict['upcoming'] = i['upcoming']
+		myDict['launch_site'] = i['launch_site']['site_name']
+		myDict['rocket_name'] = i['rocket']['rocket_name']
+		myDict['yt_video_link'] = i['links']['video_link']
+
+		mylist[0] = myDict	
+
+		return mylist
+
+
+result = SettingDateLaunches(AllDataLaunches)
+print(result)
 
