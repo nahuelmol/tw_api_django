@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import LaunchesSpaceX, ClassName
 
-# Register your models here.
+admin.site.register(LaunchesSpaceX)
+admin.site.register(ClassName)

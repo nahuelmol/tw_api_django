@@ -1,30 +1,35 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .consumerAPI import datareceived1, datareceived2
 from .consumerAPI import SpaceXLaunchesPast
+from .models import LaunchesSpaceX, ClassName
 
-from .models import theModel, LaunchesSpaceX
+def name(req):
+	nombre = 'Silvio'
 
-def saving(req):
-	data1 = datareceived1
-	data2 = datareceived2
+	myname = ClassName(name = nombre)
+	myname.save()
 
-	data1over = theModel(first_field = data1.someFieldJsonDependOfthepage)
-	data1over = theModel(other_field = data1.otherFieldfromthepage)
-	data1over.save()
+	alls = ClassName.objects.all()
+	context = {'name':alls}
+	return render(req,'name.html',context)
 
-	# and thus i can fill the fields 
 
-	return HttpResponseRedirect('/input_data/')
+def seeing_space_data(req):
+	#esto solo serviria the first time cause the db later alreadey would have the data in itself
+	AllDataLaunches = SpaceXLaunchesPast()
+	j = 0
+	mylist = []
 
-def SpaceSaver():
+	for i in AllDataLaunches:
+		ready = LaunchesSpaceX(mission_name = i['mission_name'] )
+		ready.save()
+		print(j) 
+		j += 1
 
-	LaunchesSpacex(yt_video_link=)
-	LaunchesSpacex(year_launch=)
-	LaunchesSpacex(launch_success=)
-	LaunchesSpacex(launch_site=)
-	LaunchesSpacex(upcoming=)
-	LaunchesSpacex(rocket_name=)
-	LaunchesSpacex(yt_video_link=)
+	context = { 'name' : AllDataLaunches}
 
+	return render(req,'spaceX.html', context )
+
+def init_view(req):
+	return render(req,'init_.html')
